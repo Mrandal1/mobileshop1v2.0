@@ -2,6 +2,7 @@ package com.example.a11607.mobileshop1.http.service;
 
 import com.example.a11607.mobileshop1.http.HttpMethods;
 import com.example.a11607.mobileshop1.http.entity.CategoryEntity;
+import com.example.a11607.mobileshop1.http.entity.GoodsDetailEntity;
 import com.example.a11607.mobileshop1.http.entity.GoodsEntity;
 import com.example.a11607.mobileshop1.http.entity.HttpResult;
 
@@ -23,8 +24,13 @@ public interface GoodsService {
     Observable<HttpResult<List<GoodsEntity>>> listByKeywords(
             @Field("input") String keywords
     );
-@GET("goods/cat{catId}")
-Observable<HttpResult<List<GoodsEntity>>> list(
+  @GET("goods/cat{catId}")
+    Observable<HttpResult<List<GoodsEntity>>> list(
         @Path("catId") int catId
-);
+    );
+    @GET("goods/union{catId}")
+    Observable<HttpResult<GoodsDetailEntity>> goodsDetail(
+            @Path("goodsId") int goodsId
+    );
+
 }

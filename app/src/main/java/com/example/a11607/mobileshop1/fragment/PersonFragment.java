@@ -1,7 +1,10 @@
 package com.example.a11607.mobileshop1.fragment;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +25,7 @@ import com.example.a11607.mobileshop1.activity.MyAddressActivity;
 import com.example.a11607.mobileshop1.activity.MyCollectActivity;
 import com.example.a11607.mobileshop1.activity.MyOrderActivity;
 import com.example.a11607.mobileshop1.common.BaseFragment;
+import com.example.a11607.mobileshop1.common.Constans;
 import com.example.a11607.mobileshop1.utils.SystemConfig;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -42,7 +46,7 @@ public class PersonFragment extends BaseFragment {
     RelativeLayout personal_for_not_login;
     @BindView(R.id.personal_logout_layout)
     RelativeLayout personal_logout_layout;
-
+    BroadcastReceiver receiver;
 private Button button;
     @Override
     public int getContentViewId() {
@@ -53,7 +57,25 @@ private Button button;
     @Override
     protected void initView(View view) {
         super.initView(view);
+        registerLoginReceiver();
         resetUI();
+    }
+private void registerLoginReceiver(){
+    IntentFilter filter=new IntentFilter();
+    filter.addAction(Constans.ACTION_LOGIN);
+  receiver=new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            resetUI();
+        }
+    };
+    getActivity().registerReceiver(receiver,filter);
+}
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(receiver);
     }
 
     @Override

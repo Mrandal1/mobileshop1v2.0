@@ -1,6 +1,7 @@
 package com.example.a11607.mobileshop1.activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.a11607.mobileshop1.R;
 import com.example.a11607.mobileshop1.common.BaseActivity;
+import com.example.a11607.mobileshop1.common.Constans;
 import com.example.a11607.mobileshop1.http.ProgressDialogSubscriber;
 import com.example.a11607.mobileshop1.http.entity.MemberEntity;
 import com.example.a11607.mobileshop1.http.presenter.MemberPresenter;
@@ -57,12 +59,18 @@ public class LoginActivity extends BaseActivity{
                 SystemConfig.setLoginUserName(memberEntity.uname);
                 SystemConfig.setLoginUserEmail(memberEntity.email);
                 SystemConfig.setLoginUserHead(memberEntity.image);
+                sendLoginBroadcast();
                 setResult(RESULT_OK);
                 finish();
             }
         },username,pwd);
     }
-
+private void sendLoginBroadcast(){
+    Intent intent=new Intent();
+    intent.setAction(Constans.ACTION_LOGIN);
+    intent.putExtra("my_data","这是数据");
+    sendBroadcast(intent);
+}
     }
 
 
