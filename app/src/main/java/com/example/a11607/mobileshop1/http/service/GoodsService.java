@@ -24,11 +24,11 @@ public interface GoodsService {
     Observable<HttpResult<List<GoodsEntity>>> listByKeywords(
             @Field("input") String keywords
     );
-  @GET("goods/cat{catId}")
+  @GET("goods/cat/{catId}")
     Observable<HttpResult<List<GoodsEntity>>> list(
         @Path("catId") int catId
     );
-    @GET("goods/union{catId}")
+    @GET("goods/union/{goodsId}")
     Observable<HttpResult<GoodsDetailEntity>> goodsDetail(
             @Path("goodsId") int goodsId
     );

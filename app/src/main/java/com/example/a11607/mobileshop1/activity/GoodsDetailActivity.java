@@ -90,7 +90,7 @@ public class GoodsDetailActivity extends BaseActivity {
         viewPager.setAdapter(pageAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPiexls) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
 
