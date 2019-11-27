@@ -99,7 +99,7 @@ public class GoodsListActivity extends BaseActivity{
             listData.addAll(goodsEntities);
             adapter.notifyDataSetChanged();
             if (listData==null||listData.size()==0){
-                Toast.makeText(GoodsListActivity.this,"没有给列表的商品数据！",Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoodsListActivity.this,"没有该列表的商品数据！",Toast.LENGTH_SHORT).show();
                 goodslistNoData.setVisibility(View.VISIBLE);
                 goodslistRecycleview.setVisibility(View.GONE);
             }else{

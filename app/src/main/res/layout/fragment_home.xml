@@ -1,11 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<TextView
-    android:text="HOME"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="#ffda434e"
+        android:orientation="horizontal"
+        android:paddingTop="4dip">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="10dip"
+            android:paddingTop="3dip"
+            android:src="@drawable/cart_no_data_new_icon"/>
+
+        <RelativeLayout
+            android:id="@+id/home_title_search"
+            android:layout_width="0dip"
+            android:layout_height="31dip"
+            android:layout_weight="4"
+            android:background="@drawable/home_top_search_background">
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:src="@drawable/icon_search"/>
+
+            <TextView
+                android:id="@+id/home_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="2.0dip"
+                android:layout_toRightOf="@id/iv_search"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:hint="搜索商品"
+                android:paddingBottom="2.0dip"
+                android:paddingRight="20.0dip"
+                android:paddingTop="2.0dip"
+                android:textColor="#ffb6b6b6"
+                android:textSize="14.0dip"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.a11607.mobileshop1.view.MyWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
